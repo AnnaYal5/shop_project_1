@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Вхід до Системи{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/form_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h2>Вхід</h2>
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            {{ form.as_p }}  <button type="submit" class="btn-submit">Увійти</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,4 +1,9 @@
-<main>
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Каталог Товарів{% endblock %}
+
+{% block content %}
     <section>
         <h2>✨ New Arrivals</h2>
         <div class="product-grid">
@@ -7,8 +12,9 @@
                     <h3>{{ product.name }}</h3>
                     <p>{{ product.description }}</p>
                     <span>{{ product.price }} UAH</span>
-                    <small>Додано: {{ product.added_by.username }}</small>
                 </div>
+            {% empty %}
+                <p>Немає нових надходжень.</p>
             {% endfor %}
         </div>
     </section>
@@ -22,7 +28,9 @@
                     <p>{{ product.description }}</p>
                     <span>{{ product.price }} UAH</span>
                 </div>
+            {% empty %}
+                <p>Немає хітів продажів.</p>
             {% endfor %}
         </div>
     </section>
-</main>
+{% endblock %}

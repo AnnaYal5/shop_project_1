@@ -1,29 +1,29 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Про Нас</title>
+
+{% block title %}Про Нас{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/styles_about.css' %}">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="{% url 'index' %}">Головна</a>
-            <a href="{% url 'about' %}">Про Нас</a>
-        </nav>
-    </header>
-    <main>
+{% endblock %}
+
+{% block content %}
+    <section class="store-info">
         <h1>Про Наш Магазин</h1>
-        <section class="store-info">
-            <h2>🛍️ Наша Місія</h2>
-            <p>Ми спеціалізуємося на ...</p>
-        </section>
+        <p>Ми спеціалізуємося на...</p>
+    </section>
+
+    <section class="personal-info">
         <h1>Про Розробника</h1>
-        <section class="personal-info">
-            <h2>💻 [Ваше Ім'я]</h2>
-            <p>Цей проєкт створений у рамках ...</p>
-        </section>
-    </main>
-</body>
-</html>
+        <p>Цей проєкт створений у рамках...</p>
+    </section>
+
+    <h2>📞 Форма Зворотного Зв'язку</h2>
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+        <label for="name">Ім'я:</label><input type="text" id="name" name="name" required>
+        <label for="email">Email:</label><input type="email" id="email" name="email" required>
+        <label for="message">Повідомлення:</label><textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit" class="btn-submit">Надіслати</button>
+    </form>
+{% endblock %}
