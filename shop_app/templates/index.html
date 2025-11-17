@@ -1,36 +1,28 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Головна Сторінка</title>
-    <link rel="stylesheet" href="{% static 'css/styles_main.css' %}">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="{% url 'index' %}">Головна</a>
-            <a href="{% url 'about' %}">Про Нас</a> </nav>
-    </header>
+<main>
+    <section>
+        <h2>✨ New Arrivals</h2>
+        <div class="product-grid">
+            {% for product in new_arrivals %}
+                <div class="product-item">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <span>{{ product.price }} UAH</span>
+                    <small>Додано: {{ product.added_by.username }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 
-    <main>
-        <section>
-            <h2>✨ New Arrivals</h2>
-            <div class="product-grid">
-                <div class="product-item"><h3>Товар A</h3><p>Опис 1</p><span>500 UAH</span></div>
-                <div class="product-item"><h3>Товар B</h3><p>Опис 2</p><span>750 UAH</span></div>
-                <div class="product-item"><h3>Товар C</h3><p>Опис 3</p><span>1200 UAH</span></div>
-            </div>
-        </section>
-
-        <section>
-            <h2>🏆 Best Sellers</h2>
-            <div class="product-grid">
-                <div class="product-item best-seller"><h3>Товар D</h3><p>Хіт продажу!</p><span>999 UAH</span></div>
-            </div>
-        </section>
-    </main>
-
-    <footer>&copy; 2025 Мій Проєкт</footer>
-</body>
-</html>
+    <section>
+        <h2>🏆 Best Sellers</h2>
+        <div class="product-grid">
+            {% for product in best_sellers %}
+                <div class="product-item best-seller">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <span>{{ product.price }} UAH</span>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
